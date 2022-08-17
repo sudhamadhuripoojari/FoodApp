@@ -9,13 +9,13 @@ function Recipe() {
     const [activeTab, setActiveTab] = useState('instructions');
 
     const fetchDetails = async()=>{
-        const data =  await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=7ced41ad31f241928eae364d4bd8c5b3`);
+        const data =  await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=44922d5dd9e54680a89ec9d35bf50bac`);
         const detailData = await data.json();
         setDetails(detailData); // It is an Object
         console.log ('Details', detailData)
 
     };
-    useEffect(()=>{
+    useEffect(()=>{ 
         fetchDetails();
     }, [params.name]);
 
@@ -24,7 +24,7 @@ function Recipe() {
   return (
     <DetailWrapper>
        <div>
-        <h2>{details.title}</h2>
+        <h2> {details.title} </h2>
         <img src={details.image} alt={details.title} />
        </div>
        <Info>
@@ -34,6 +34,27 @@ function Recipe() {
             <Button className= {activeTab=== 'ingredients'? 'active': ''}onClick={()=>setActiveTab('ingredients')}>
                 Ingredients
             </Button>
+
+            {activeTab === 'instructions' && (
+                <div>
+                 <h3 dangerouslySetInnerHTML={{__html: details.summary}}></h3>
+                 <h3 dangerouslySetInnerHTML={{__html: details.instructions}}></h3>
+             </div>
+            )}
+
+            {activeTab === 'ingredients' &&  (
+                <ul>
+                    {details.extendedIngredients.map((ingredient)=>{
+                        <li key={ingredient.id}> {ingredient.original} </li>
+                        console.log('ingredient', ingredient.original)
+                    })}    
+                </ul>
+
+              
+            )}
+
+           
+          
        </Info>
     </DetailWrapper>  
   )
@@ -58,6 +79,11 @@ const DetailWrapper = styled.div`
     }
     ul{
         margin-top: 2rem;
+    }
+
+    h3{
+        font-weight: 500;
+        font-size: 1.3rem;
     }
 
 `;

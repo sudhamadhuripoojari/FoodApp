@@ -25,7 +25,7 @@ const Veggie = () => {
       // Fetch the Random recipes 
     else{
     // const getPopular = async () =>{
-       const api = await fetch (`https://api.spoonacular.com/recipes/random?apiKey=7ced41ad31f241928eae364d4bd8c5b3&number=9&tags=vegetarian`);
+       const api = await fetch (`https://api.spoonacular.com/recipes/random?apiKey=44922d5dd9e54680a89ec9d35bf50bac&number=9&tags=vegetarian`);
         const data = await api.json();
         localStorage.setItem('veggie', JSON.stringify(data.recipes));
         // console.log("data", data);
