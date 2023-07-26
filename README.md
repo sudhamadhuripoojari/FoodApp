@@ -13,5 +13,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The project is deployed on vercel
 
-Click the link to see the project: https://food-app-six-lac.vercel.app/searched/cake
+Click the link to see the project: https://food-app-six-lac.vercel.app/
 
